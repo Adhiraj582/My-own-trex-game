@@ -50,10 +50,10 @@ function setup() {
   ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
   
-  gameOver = createSprite(width - 50,height - 50);
+  gameOver = createSprite(width - 50,height - 100);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(width - 50,height - 50);
+  restart = createSprite(width - 50,height - 100);
   restart.addImage(restartImg);
   
   gameOver.scale = 0.5;
