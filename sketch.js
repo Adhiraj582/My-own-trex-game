@@ -39,21 +39,21 @@ function preload(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   
-  trex = createSprite(50,180,20,50);
+  trex = createSprite(50,400,20,50);
   
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);
   trex.scale = 0.5;
   
-  ground = createSprite(200,180,400,20);
+  ground = createSprite(200,400,400,20);
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
   
-  gameOver = createSprite(width - 70,height - 11);
+  gameOver = createSprite(660,320);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(width - 70,height - 10);
+  restart = createSprite(660, 350);
   restart.addImage(restartImg);
   
   gameOver.scale = 0.5;
@@ -62,7 +62,7 @@ function setup() {
   gameOver.visible = false;
   restart.visible = false;
   
-  invisibleGround = createSprite(200,190,400,10);
+  invisibleGround = createSprite(200,410,400,10);
   invisibleGround.visible = false;
   
   cloudsGroup = new Group();
@@ -83,7 +83,7 @@ function draw() {
     score = score + Math.round(getFrameRate()/60);
     ground.velocityX = -(6 + 3*score/100);
   
-    if((touches.length > 0 || keyDown("space")) && trex.y >= 159) {
+    if((touches.length > 0 || keyDown("space")) && trex.y >= 380) {
       trex.velocityY = -12;
       jumpSound.play();
       jumpSound.setVolume(0.1);
@@ -135,14 +135,14 @@ function draw() {
 function spawnClouds() {
   //write code here to spawn the clouds
   if (frameCount % 60 === 0) {
-    var cloud = createSprite(width - 50,120,40,10);
-    cloud.y = Math.round(random(80,120));
+    var cloud = createSprite(width - 50,440,40,10);
+    cloud.y = Math.round(random(290,320));
     cloud.addImage(cloudImage);
     cloud.scale = 0.1;
     cloud.velocityX = -3;
     
      //assign lifetime to the variable
-    cloud.lifetime = 200;
+    cloud.lifetime = 300;
     
     //adjust the depth
     cloud.depth = trex.depth;
@@ -156,7 +156,7 @@ function spawnClouds() {
 
 function spawnObstacles() {
   if(frameCount % 60 === 0) {
-    var obstacle = createSprite(width - 50,165,10,40);
+    var obstacle = createSprite(width - 50,380,10,40);
     //obstacle.debug = true;
     obstacle.velocityX = -(6 + 3*score/100);
     
